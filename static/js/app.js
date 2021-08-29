@@ -43,12 +43,20 @@ function updateFilters() {
     let country = d3.select("#country").property("value");
     let shape = d3.select("#shape").property("value");
     // 4c. Save the id of the filter that was changed as a variable.
-    let id = ;
   
     // 5. If a filter value was entered then add that filterId and value
     // to the filters list. Otherwise, clear that filter from the filters object.
-    if 
-  
+    if (date) {
+      filteredData = filteredData.filter(row => row.datetime === date)
+    } else if (city) {
+      filteredData = filteredData.filter(row => row.city === city)
+    } else if (state) {
+      filteredData = filteredData.filter(row => row.state === state)
+    } else if (country) {
+      filteredData = filteredData.filter(row => row.country === country);
+    } else if (shape) {
+      filteredData = filteredData.filter(row => row.shape === shape);
+    }
     // 6. Call function to apply all filters and rebuild the table
     filterTable();
   
